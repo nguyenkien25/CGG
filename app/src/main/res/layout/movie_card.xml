@@ -1,0 +1,138 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/card_margin"
+        android:elevation="3dp"
+        card_view:cardCornerRadius="@dimen/card_movie_radius">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imv_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/movie_cover_height"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:scaleType="fitXY" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imv_thumbnail"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_name_movie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/movie_title_padding"
+                    android:paddingRight="@dimen/movie_title_padding"
+                    android:paddingTop="@dimen/movie_title_padding"
+                    android:textColor="@color/movieTitle"
+                    android:textSize="@dimen/movie_title" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imv_thumbnail"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/movie_title_padding"
+                        android:paddingLeft="@dimen/movie_title_padding"
+                        android:text="Thể Loại: "
+                        android:textSize="@dimen/movie_kind_padding"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_movie_kind"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/movie_title_padding"
+                        android:paddingRight="@dimen/movie_title_padding"
+                        android:textSize="@dimen/movie_kind_padding" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imv_thumbnail"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/movie_title_padding"
+                        android:paddingLeft="@dimen/movie_title_padding"
+                        android:text="Thời Lượng: "
+                        android:textSize="@dimen/movie_kind_padding"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_movie_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/movie_title_padding"
+                        android:paddingRight="@dimen/movie_title_padding"
+                        android:textSize="@dimen/movie_kind_padding" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imv_thumbnail"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/movie_title_padding"
+                        android:paddingLeft="@dimen/movie_title_padding"
+                        android:text="Khởi Chiếu: "
+                        android:textSize="@dimen/movie_kind_padding"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_movie_premiere"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/movie_title_padding"
+                        android:paddingRight="@dimen/movie_title_padding"
+                        android:textSize="@dimen/movie_kind_padding" />
+                </LinearLayout>
+
+                <org.khtn.group12.cgg.widget.CustomButton
+                    android:id="@+id/btn_get_ticket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/card_margin"
+                    android:background="@drawable/custom_bg_button"
+                    android:gravity="center"
+                    android:text="Mua vé"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/text_size_medium"
+                    app:fontButtonText="@string/font_text" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
