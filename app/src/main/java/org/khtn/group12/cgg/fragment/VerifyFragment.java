@@ -79,6 +79,7 @@ public class VerifyFragment extends Fragment {
 
         FirebaseApp.initializeApp(getActivity());
         auth = FirebaseAuth.getInstance();
+        auth.setLanguageCode("vi");
         initCallbackVerify();
         sendCodeVerify(numberPhone, callbacks);
 
