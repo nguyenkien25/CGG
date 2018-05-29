@@ -1,6 +1,25 @@
 <resources>
     <string name="app_name">CGG</string>
-    <string name="action_settings">Settings</string>
-    <string name="action_add_favourite">Add to Favourites</string>
-    <string name="action_play_next">Play Next</string>
+    <string name="action_login">Đăng Nhập</string>
+    <string name="action_logout">Đăng Xuất</string>
+
+    <!-- TODO: String in login & register -->
+    <string name="password">Mật khẩu</string>
+    <string name="number_phone">Số điện thoại</string>
+    <string name="login">Đăng Nhập</string>
+    <string name="register">Đăng Ký</string>
+    <string name="non_login">Sử dụng thử ứng dụng không cần đăng ký</string>
+    <string name="resend">Gửi Lại Mã</string>
+    <string name="next">Tiếp Tục</string>
+    <string name="login_successful">Đăng nhập thành công.</string>
+    <string name="login_fail">Đăng nhập thất bại.</string>
+    <string name="register_successful">Đăng ký thành công.</string>
+    <string name="register_fail">Đăng ký thất bại.</string>
+    <string name="code_fail">Mã nhập vào không đúng.</string>
+    <string name="send_code_fail">Gửi mã thất bại.</string>
+    <string name="number_phone_fail">Số điện thoại không đúng.</string>
+    <string name="quota_exceeded">Lưu trữ quá tải.</string>
+    <string name="send_code">Đang gửi code đến số điện thoại.</string>
+    <string name="error_field_required">Trường này là bắt buộc.</string>
+    <string name="error_invalid_password">Mật khẩu này quá ngắn.</string>
 </resources>

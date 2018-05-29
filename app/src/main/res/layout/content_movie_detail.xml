@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_movie_detail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/card_margin">
+
+            <org.khtn.group12.cgg.widget.CustomButton
+                android:id="@+id/btn_get_ticket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/card_margin"
+                android:background="@drawable/custom_bg_button"
+                android:gravity="center"
+                android:text="Đặt Vé"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size_medium"
+                app:fontButtonText="@string/font_text" />
+
+            <TextView
+                android:id="@+id/tv_movie_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/btn_get_ticket"
+                android:textSize="@dimen/text_size_movie_title"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_movie_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/btn_get_ticket"
+            android:text="asdad sda"
+            android:textSize="@dimen/text_size_medium" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_vertical_margin" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imv_thumbnail"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/movie_title_padding"
+                android:paddingLeft="@dimen/movie_title_padding"
+                android:text="Khởi chiếu: "
+                android:textSize="@dimen/movie_kind_padding"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_movie_premiere"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/movie_title_padding"
+                android:paddingRight="@dimen/movie_title_padding"
+                android:textSize="@dimen/movie_kind_padding" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imv_thumbnail"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/movie_title_padding"
+                android:paddingLeft="@dimen/movie_title_padding"
+                android:text="Thể loại: "
+                android:textSize="@dimen/movie_kind_padding"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_movie_kind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/movie_title_padding"
+                android:paddingRight="@dimen/movie_title_padding"
+                android:textSize="@dimen/movie_kind_padding" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imv_thumbnail"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/movie_title_padding"
+                android:paddingLeft="@dimen/movie_title_padding"
+                android:text="Đạo diễn: "
+                android:textSize="@dimen/movie_kind_padding"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_movie_directors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/movie_title_padding"
+                android:paddingRight="@dimen/movie_title_padding"
+                android:textSize="@dimen/movie_kind_padding" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imv_thumbnail"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/movie_title_padding"
+                android:paddingLeft="@dimen/movie_title_padding"
+                android:text="Diễn viên: "
+                android:textSize="@dimen/movie_kind_padding"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_movie_cast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/movie_title_padding"
+                android:paddingRight="@dimen/movie_title_padding"
+                android:textSize="@dimen/movie_kind_padding" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imv_thumbnail"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/movie_title_padding"
+                android:paddingLeft="@dimen/movie_title_padding"
+                android:text="Thời lượng: "
+                android:textSize="@dimen/movie_kind_padding"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_movie_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/movie_title_padding"
+                android:paddingRight="@dimen/movie_title_padding"
+                android:textSize="@dimen/movie_kind_padding" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imv_thumbnail"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/movie_title_padding"
+                android:paddingLeft="@dimen/movie_title_padding"
+                android:text="Ngôn ngữ: "
+                android:textSize="@dimen/movie_kind_padding"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_movie_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/movie_title_padding"
+                android:paddingRight="@dimen/movie_title_padding"
+                android:textSize="@dimen/movie_kind_padding" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
