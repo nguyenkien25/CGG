@@ -10,6 +10,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,20 +18,29 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.khtn.group12.cgg.adapter.HomeAdapter;
 import org.khtn.group12.cgg.R;
 import org.khtn.group12.cgg.model.Movie;
+import org.khtn.group12.cgg.utils.AppController;
 import org.khtn.group12.cgg.utils.Constants;
 import org.khtn.group12.cgg.utils.GridSpacingItemDecoration;
+import org.khtn.group12.cgg.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity {
+    private static final String TAG = HomeActivity.class.getSimpleName();
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerViewListMovie;
@@ -40,9 +50,13 @@ public class HomeActivity extends AppCompatActivity {
     CollapsingToolbarLayout mCollapsingToolbarHome;
     @BindView(R.id.appbar)
     AppBarLayout mAppBarLayout;
+    private MenuItem mMenuLogin;
+    private MenuItem mMenuLogout;
 
     private HomeAdapter mAdapterListMovie;
     private List<Movie> mListMovie;
+    private DatabaseReference mFirebaseDatabase;
+    private FirebaseDatabase mFirebaseInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,25 +64,33 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbarHome);
-
+        initRecycleView();
         initCollapsingToolbar();
+        initFireBase();
+    }
 
-        mListMovie = new ArrayList<>();
-        mAdapterListMovie = new HomeAdapter(this, mListMovie);
-
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
-        mRecyclerViewListMovie.setLayoutManager(mLayoutManager);
-        mRecyclerViewListMovie.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
-        mRecyclerViewListMovie.setItemAnimator(new DefaultItemAnimator());
+    @Override
+    protected void onResume() {
+        super.onResume();
         mRecyclerViewListMovie.setAdapter(mAdapterListMovie);
-
-        prepareAlbums();
 
         try {
             Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
+        if (mMenuLogin != null) {
+            checkUserLogin();
+        }
+    }
+
+    private void initRecycleView() {
+        mListMovie = new ArrayList<>();
+        mAdapterListMovie = new HomeAdapter(this, mListMovie);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
+        mRecyclerViewListMovie.setLayoutManager(mLayoutManager);
+        mRecyclerViewListMovie.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+        mRecyclerViewListMovie.setItemAnimator(new DefaultItemAnimator());
     }
 
     /**
@@ -103,60 +125,62 @@ public class HomeActivity extends AppCompatActivity {
     /**
      * Adding few albums for testing
      */
-    private void prepareAlbums() {
-        int[] covers = new int[]{
-                R.drawable.album1,
-                R.drawable.album2,
-                R.drawable.album3,
-                R.drawable.album4,
-                R.drawable.album5,
-                R.drawable.album6,
-                R.drawable.album7,
-                R.drawable.album8,
-                R.drawable.album9,
-                R.drawable.album10,
-                R.drawable.album11};
+    private void initFireBase() {
+        mFirebaseInstance = FirebaseDatabase.getInstance();
+        // get reference to 'users' node
+        mFirebaseDatabase = mFirebaseInstance.getReference(Constants.FIREBASE_MOVIE);
 
-        Movie a = new Movie("True Romance", 13, covers[0]);
-        mListMovie.add(a);
+        // data change listener
+        mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.e(TAG, "Count: " + dataSnapshot.getChildrenCount());
 
-        a = new Movie("Xscpae", 8, covers[1]);
-        mListMovie.add(a);
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    String key = postSnapshot.getKey();
+                    Movie movie = postSnapshot.getValue(Movie.class);
+                    movie.setId(key);
+                    mListMovie.add(movie);
+                }
+                Collections.reverse(mListMovie);
+                mAdapterListMovie.notifyDataSetChanged();
+            }
 
-        a = new Movie("Maroon 5", 11, covers[2]);
-        mListMovie.add(a);
-
-        a = new Movie("Born to Die", 12, covers[3]);
-        mListMovie.add(a);
-
-        a = new Movie("Honeymoon", 14, covers[4]);
-        mListMovie.add(a);
-
-        a = new Movie("I Need a Doctor", 1, covers[5]);
-        mListMovie.add(a);
-
-        a = new Movie("Loud", 11, covers[6]);
-        mListMovie.add(a);
-
-        a = new Movie("Legend", 14, covers[7]);
-        mListMovie.add(a);
-
-        a = new Movie("Hello", 11, covers[8]);
-        mListMovie.add(a);
-
-        a = new Movie("Greatest Hits", 17, covers[9]);
-        mListMovie.add(a);
-
-        mAdapterListMovie.notifyDataSetChanged();
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.e(TAG, "Failed to read app title value.", error.toException());
+            }
+        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-//        MenuItem mMenuLogin = menu.findItem(R.id.login_logout);
-//        mMenuLogin.setVisible(false);
+        inflater.inflate(R.menu.menu_home, menu);
+        mMenuLogin = menu.findItem(R.id.login);
+        mMenuLogout = menu.findItem(R.id.logout);
+
+        checkUserLogin();
         return true;
+    }
+
+    private void checkUserLogin() {
+        if (Utils.checkUserLogin()) {
+            showMenuLogin(true);
+        } else {
+            showMenuLogin(false);
+        }
+    }
+
+    private void showMenuLogin(boolean isLogged) {
+        if (isLogged) {
+            mMenuLogin.setVisible(false);
+            mMenuLogout.setVisible(true);
+        } else {
+            mMenuLogin.setVisible(true);
+            mMenuLogout.setVisible(false);
+        }
     }
 
     @Override
@@ -168,7 +192,8 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.logout:
-                item.setVisible(false);
+                AppController.getInstance().getPrefManager().clear();
+                showMenuLogin(false);
                 break;
         }
         return super.onOptionsItemSelected(item);

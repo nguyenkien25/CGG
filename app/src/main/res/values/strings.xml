@@ -2,6 +2,10 @@
     <string name="app_name">CGG</string>
     <string name="action_login">Đăng Nhập</string>
     <string name="action_logout">Đăng Xuất</string>
+    <string name="action_save">Lưu Lại</string>
+
+    <!-- TODO: Youtube KEY API -->
+    <string name="youtube_api_key">AIzaSyC9mqGURPr-XtiUjG6X8IoFJtpzfsMWE6k</string>
 
     <!-- TODO: String in login & register -->
     <string name="password">Mật khẩu</string>
@@ -22,4 +26,31 @@
     <string name="send_code">Đang gửi code đến số điện thoại.</string>
     <string name="error_field_required">Trường này là bắt buộc.</string>
     <string name="error_invalid_password">Mật khẩu này quá ngắn.</string>
+
+    <!-- TODO: Dialog -->
+    <string name="agree">Đồng Ý</string>
+    <string name="disagree">Không Đồng Ý</string>
+    <string name="title_book_ticket">Đặt Vé</string>
+    <string name="content_book_ticket">Bạn có chắc chắn đặt các vé: </string>
+
+    <!-- TODO: Content Book Ticket-->
+    <string name="screen">Màn Hình</string>
+    <string name="row_a">Dãy A</string>
+    <string name="row_b">Dãy B</string>
+    <string name="row_c">Dãy C</string>
+    <string name="row_d">Dãy D</string>
+    <string name="row_e">Dãy E</string>
+    <string name="row_f">Dãy F</string>
+    <string name="book">: Ghế đã có người đặt</string>
+    <string name="non_book">: Ghế chưa có người đặt</string>
+    <string name="selected">: Ghế bạn đang chọn</string>
+
+    <!-- TODO: Content Movie Detail-->
+    <string name="get_ticket">Đặt Vé</string>
+    <string name="movie_premiere">Khởi chiếu: </string>
+    <string name="movie_kind">Thể loại: </string>
+    <string name="movie_directors">Đạo diễn: </string>
+    <string name="movie_cast">Diễn viên: </string>
+    <string name="movie_time">Thời lượng: </string>
+    <string name="movie_language">Ngôn ngữ: </string>
 </resources>

@@ -13,8 +13,13 @@ import com.bumptech.glide.Glide;
 
 import org.khtn.group12.cgg.R;
 import org.khtn.group12.cgg.activity.BookTicketActivity;
+import org.khtn.group12.cgg.activity.HomeActivity;
+import org.khtn.group12.cgg.activity.LoginRegisterActivity;
 import org.khtn.group12.cgg.activity.MovieDetailActivity;
 import org.khtn.group12.cgg.model.Movie;
+import org.khtn.group12.cgg.utils.AppController;
+import org.khtn.group12.cgg.utils.Constants;
+import org.khtn.group12.cgg.utils.Utils;
 import org.khtn.group12.cgg.widget.CustomButton;
 
 import java.util.List;
@@ -32,10 +37,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         TextView tvName;
         @BindView(R.id.tv_movie_kind)
         TextView tvMovieKind;
+        @BindView(R.id.tv_movie_time)
+        TextView tvMovieTime;
+        @BindView(R.id.tv_movie_premiere)
+        TextView tvMoviePremiere;
         @BindView(R.id.imv_thumbnail)
         ImageView imvThumbnail;
-        @BindView(R.id.btn_get_ticket)
-        CustomButton btnGetTicket;
 
         public MyViewHolder(View view) {
             super(view);
@@ -59,27 +66,23 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Movie album = mListMovie.get(position);
-        holder.tvName.setText(album.getName());
-        holder.tvMovieKind.setText(album.getNumOfSongs() + " songs");
+        Movie movie = mListMovie.get(position);
+        holder.tvName.setText(movie.getName());
+        holder.tvMovieKind.setText(movie.getKind());
+        holder.tvMovieTime.setText(movie.getTime());
+        holder.tvMoviePremiere.setText(movie.getPremiere());
 
         // loading album cover using Glide library
-        Glide.with(mContext).load(album.getThumbnail()).into(holder.imvThumbnail);
-        holder.imvThumbnail.setOnClickListener(v -> {
-            showMovieDetail();
-        });
-        holder.btnGetTicket.setOnClickListener(v -> {
-            showGetTicket();
-        });
+        Glide.with(mContext)
+                .load(movie.getImage())
+                .into(holder.imvThumbnail);
+
+        holder.imvThumbnail.setOnClickListener(v -> showMovieDetail(movie));
     }
 
-    private void showGetTicket() {
-        Intent intent = new Intent(mContext, BookTicketActivity.class);
-        mContext.startActivity(intent);
-    }
-
-    private void showMovieDetail() {
+    private void showMovieDetail(Movie movie) {
         Intent intent = new Intent(mContext, MovieDetailActivity.class);
+        intent.putExtra(Constants.INTENT_PUT_EXTRA_MOVIE, movie);
         mContext.startActivity(intent);
     }
 

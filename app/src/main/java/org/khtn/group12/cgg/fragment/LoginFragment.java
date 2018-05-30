@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import org.khtn.group12.cgg.R;
 import org.khtn.group12.cgg.activity.LoginRegisterActivity;
+import org.khtn.group12.cgg.utils.AppController;
 import org.khtn.group12.cgg.utils.Constants;
 
 import butterknife.BindView;
@@ -100,16 +101,17 @@ public class LoginFragment extends Fragment {
             // form field with an error.
             focusView.requestFocus();
         } else {
-            performFirebaseLogin(Constants.PEX_PHONE + numberPhone.substring(1) + Constants.EXTENSION_EMAIL, password);
+            performFireBaseLogin(Constants.PEX_PHONE + numberPhone.substring(1) + Constants.EXTENSION_EMAIL, password);
         }
     }
 
-    private void performFirebaseLogin(String email, String password) {
+    private void performFireBaseLogin(String email, String password) {
         FirebaseAuth.getInstance()
                 .signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(getActivity(), task -> {
                     if (task.isSuccessful()) {
                         Toast.makeText(getActivity(), getString(R.string.login_successful), Toast.LENGTH_LONG).show();
+                        AppController.getInstance().getPrefManager().storeUID(task.getResult().getUser().getUid());
                         ((LoginRegisterActivity) getActivity()).goToMain();
                     } else {
                         Toast.makeText(getActivity(), getString(R.string.login_fail), Toast.LENGTH_LONG).show();

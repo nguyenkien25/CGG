@@ -71,15 +71,24 @@ public class LoginRegisterActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            finish();
+            onBackPressed();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
     public void goToMain() {
-        startActivity(new Intent(this, HomeActivity.class));
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        int count = getFragmentManager().getBackStackEntryCount();
+        if (count == 0) {
+            finish();
+        } else {
+            getFragmentManager().popBackStack();
+        }
     }
 
     public void gotoVerify(String number, String password) {
@@ -92,15 +101,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
         return numberPhoneRegister;
     }
 
-    public void setNumberPhoneRegister(String numberPhoneRegister) {
-        this.numberPhoneRegister = numberPhoneRegister;
-    }
-
     public String getPasswordRegister() {
         return passwordRegister;
-    }
-
-    public void setPasswordRegister(String passwordRegister) {
-        this.passwordRegister = passwordRegister;
     }
 }

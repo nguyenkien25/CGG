@@ -21,7 +21,7 @@
             android:drawableRight="@drawable/ic_movie"
             android:gravity="center"
             android:padding="@dimen/backdrop_subtitle"
-            android:text="Màn Hình"
+            android:text="@string/screen"
             android:textSize="@dimen/text_size_big"
             android:textStyle="bold" />
 
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/card_margin"
-            android:text="Dãy A"
+            android:text="@string/row_a"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="bold" />
 
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/card_margin"
-            android:text="Dãy B"
+            android:text="@string/row_b"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="bold" />
 
@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/card_margin"
-            android:text="Dãy C"
+            android:text="@string/row_c"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="bold" />
 
@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/card_margin"
-            android:text="Dãy D"
+            android:text="@string/row_d"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="bold" />
 
@@ -97,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/card_margin"
-            android:text="Dãy E"
+            android:text="@string/row_e"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="bold" />
 
@@ -114,7 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/card_margin"
-            android:text="Dãy F"
+            android:text="@string/row_f"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="bold" />
 
@@ -134,7 +134,7 @@
             android:layout_marginTop="@dimen/card_margin"
             android:drawableLeft="@drawable/ic_person_book"
             android:gravity="center_vertical"
-            android:text=": Ghế đã có người đặt"
+            android:text="@string/book"
             android:textStyle="bold" />
 
         <TextView
@@ -144,7 +144,7 @@
             android:layout_marginTop="@dimen/card_margin"
             android:drawableLeft="@drawable/ic_person_non_book"
             android:gravity="center_vertical"
-            android:text=": Ghế chưa có người đặt"
+            android:text="@string/non_book"
             android:textStyle="bold" />
 
         <TextView
@@ -155,7 +155,7 @@
             android:layout_marginTop="@dimen/card_margin"
             android:drawableLeft="@drawable/ic_person_select"
             android:gravity="center_vertical"
-            android:text=": Ghế bạn đang chọn"
+            android:text="@string/selected"
             android:textStyle="bold" />
     </LinearLayout>
 </ScrollView>

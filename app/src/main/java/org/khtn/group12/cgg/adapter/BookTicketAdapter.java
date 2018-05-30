@@ -38,6 +38,9 @@ public class BookTicketAdapter extends RecyclerView.Adapter<BookTicketAdapter.My
         }
     }
 
+    public List<NumberBook> getmListBookTicket() {
+        return mListBookTicket;
+    }
 
     public BookTicketAdapter(Context mContext, List<NumberBook> bookTicketList) {
         this.mContext = mContext;

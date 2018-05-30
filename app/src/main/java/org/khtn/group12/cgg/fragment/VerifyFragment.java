@@ -23,6 +23,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import org.khtn.group12.cgg.R;
 import org.khtn.group12.cgg.activity.LoginRegisterActivity;
+import org.khtn.group12.cgg.utils.AppController;
 import org.khtn.group12.cgg.utils.Constants;
 
 import java.util.concurrent.TimeUnit;
@@ -166,7 +167,7 @@ public class VerifyFragment extends Fragment {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         auth.signOut();
-                        performFirebaseRegistration(numberPhone + Constants.EXTENSION_EMAIL, password);
+                        performFireBaseRegistration(numberPhone + Constants.EXTENSION_EMAIL, password);
                     } else {
                         // Sign in failed, display a message and update the UI
                         Toast.makeText(getActivity(), getString(R.string.register_fail), Toast.LENGTH_LONG).show();
@@ -178,11 +179,12 @@ public class VerifyFragment extends Fragment {
                 });
     }
 
-    private void performFirebaseRegistration(String email, String password) {
+    private void performFireBaseRegistration(String email, String password) {
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(getActivity(), task -> {
                     if (task.isSuccessful()) {
                         Toast.makeText(getActivity(), getString(R.string.register_successful), Toast.LENGTH_LONG).show();
+                        AppController.getInstance().getPrefManager().storeUID(task.getResult().getUser().getUid());
                         ((LoginRegisterActivity) getActivity()).goToMain();
                     } else {
                         Toast.makeText(getActivity(), getString(R.string.register_fail), Toast.LENGTH_LONG).show();

@@ -12,6 +12,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <fragment
+            android:id="@+id/youtube_view_movie_trailer"
+            android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,7 +32,7 @@
                 android:layout_marginBottom="@dimen/card_margin"
                 android:background="@drawable/custom_bg_button"
                 android:gravity="center"
-                android:text="Đặt Vé"
+                android:text="@string/get_ticket"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/text_size_medium"
                 app:fontButtonText="@string/font_text" />
@@ -36,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/btn_get_ticket"
-                android:textSize="@dimen/text_size_movie_title"
+                android:textSize="@dimen/text_size_medium_2"
                 android:textStyle="bold" />
         </RelativeLayout>
 
@@ -45,7 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/btn_get_ticket"
-            android:text="asdad sda"
+            android:paddingLeft="@dimen/movie_title_padding"
+            android:paddingRight="@dimen/movie_title_padding"
             android:textSize="@dimen/text_size_medium" />
 
         <View
@@ -64,7 +71,8 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/movie_title_padding"
                 android:paddingLeft="@dimen/movie_title_padding"
-                android:text="Khởi chiếu: "
+                android:paddingRight="@dimen/movie_title_padding"
+                android:text="@string/movie_premiere"
                 android:textSize="@dimen/movie_kind_padding"
                 android:textStyle="bold" />
 
@@ -89,7 +97,8 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/movie_title_padding"
                 android:paddingLeft="@dimen/movie_title_padding"
-                android:text="Thể loại: "
+                android:paddingRight="@dimen/movie_title_padding"
+                android:text="@string/movie_kind"
                 android:textSize="@dimen/movie_kind_padding"
                 android:textStyle="bold" />
 
@@ -114,7 +123,8 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/movie_title_padding"
                 android:paddingLeft="@dimen/movie_title_padding"
-                android:text="Đạo diễn: "
+                android:paddingRight="@dimen/movie_title_padding"
+                android:text="@string/movie_directors"
                 android:textSize="@dimen/movie_kind_padding"
                 android:textStyle="bold" />
 
@@ -139,7 +149,8 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/movie_title_padding"
                 android:paddingLeft="@dimen/movie_title_padding"
-                android:text="Diễn viên: "
+                android:paddingRight="@dimen/movie_title_padding"
+                android:text="@string/movie_cast"
                 android:textSize="@dimen/movie_kind_padding"
                 android:textStyle="bold" />
 
@@ -164,7 +175,8 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/movie_title_padding"
                 android:paddingLeft="@dimen/movie_title_padding"
-                android:text="Thời lượng: "
+                android:paddingRight="@dimen/movie_title_padding"
+                android:text="@string/movie_time"
                 android:textSize="@dimen/movie_kind_padding"
                 android:textStyle="bold" />
 
@@ -189,7 +201,8 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/movie_title_padding"
                 android:paddingLeft="@dimen/movie_title_padding"
-                android:text="Ngôn ngữ: "
+                android:paddingRight="@dimen/movie_title_padding"
+                android:text="@string/movie_language"
                 android:textSize="@dimen/movie_kind_padding"
                 android:textStyle="bold" />
 

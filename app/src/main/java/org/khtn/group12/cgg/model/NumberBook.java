@@ -14,6 +14,12 @@ public class NumberBook {
         this.isSelect = isSelect;
     }
 
+    public NumberBook(String nameNumber) {
+        this.isBook = false;
+        this.nameNumber = nameNumber;
+        this.isSelect = false;
+    }
+
     public boolean isBook() {
         return isBook;
     }

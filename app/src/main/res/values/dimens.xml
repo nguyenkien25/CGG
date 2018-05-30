@@ -18,6 +18,7 @@
     <dimen name="ic_movie_overflow_margin_top">10dp</dimen>
 
     <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_medium_2">20sp</dimen>
     <dimen name="text_size_big">32sp</dimen>
     <dimen name="padding">10dp</dimen>
     <dimen name="margin">10dp</dimen>
