@@ -12,5 +12,6 @@ CGG Project is the subject of study in group 12.
 - [Meterial Dialogs](https://github.com/afollestad/material-dialogs)
 - [Glide](https://github.com/bumptech/glide)
 - [Butter Knife](https://github.com/JakeWharton/butterknife)
+- [PageIndicatorView](https://github.com/romandanylyk/PageIndicatorView)
 
 ## License
