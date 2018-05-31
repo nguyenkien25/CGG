@@ -44,6 +44,17 @@
                 android:layout_toLeftOf="@+id/btn_get_ticket"
                 android:textSize="@dimen/text_size_medium_2"
                 android:textStyle="bold" />
+
+            <RatingBar
+                android:id="@+id/rating_bar_movie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_movie_name"
+                android:layout_toLeftOf="@+id/btn_get_ticket"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.1"
+                android:theme="@style/RatingBar" />
         </RelativeLayout>
 
         <TextView

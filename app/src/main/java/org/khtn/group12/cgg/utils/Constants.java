@@ -15,4 +15,6 @@ public class Constants {
 
     public static final String FIREBASE_BOOK_TICKET = "book_ticket";
     public static final String FIREBASE_MOVIE = "movie";
+
+    public static final int NUMBER_IMAGE_COVER = 3;
 }

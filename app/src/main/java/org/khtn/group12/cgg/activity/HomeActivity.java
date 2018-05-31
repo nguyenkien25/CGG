@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -23,7 +24,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.rd.PageIndicatorView;
 
+import org.khtn.group12.cgg.adapter.CoverImageAdapter;
 import org.khtn.group12.cgg.adapter.HomeAdapter;
 import org.khtn.group12.cgg.R;
 import org.khtn.group12.cgg.model.Movie;
@@ -50,6 +53,10 @@ public class HomeActivity extends AppCompatActivity {
     CollapsingToolbarLayout mCollapsingToolbarHome;
     @BindView(R.id.appbar)
     AppBarLayout mAppBarLayout;
+    @BindView(R.id.view_pager_covers)
+    ViewPager mViewPagerCovers;
+    @BindView(R.id.page_dots_covers)
+    PageIndicatorView mPageIndicatorViewCovers;
     private MenuItem mMenuLogin;
     private MenuItem mMenuLogout;
 
@@ -72,16 +79,21 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mRecyclerViewListMovie.setAdapter(mAdapterListMovie);
 
-        try {
-            Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        mAdapterListMovie.notifyDataSetChanged();
         if (mMenuLogin != null) {
             checkUserLogin();
         }
+    }
+
+    private void initViewPager() {
+        List<String> listImageCover = new ArrayList<>();
+        for (int i = 0; i < Constants.NUMBER_IMAGE_COVER; i++) {
+            listImageCover.add(mListMovie.get(i).getImage());
+        }
+        CoverImageAdapter adapter = new CoverImageAdapter(HomeActivity.this, listImageCover);
+        mViewPagerCovers.setAdapter(adapter);
+        mPageIndicatorViewCovers.setViewPager(mViewPagerCovers);
     }
 
     private void initRecycleView() {
@@ -91,6 +103,7 @@ public class HomeActivity extends AppCompatActivity {
         mRecyclerViewListMovie.setLayoutManager(mLayoutManager);
         mRecyclerViewListMovie.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         mRecyclerViewListMovie.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerViewListMovie.setAdapter(mAdapterListMovie);
     }
 
     /**
@@ -135,7 +148,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.e(TAG, "Count: " + dataSnapshot.getChildrenCount());
-
+                mListMovie.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     String key = postSnapshot.getKey();
                     Movie movie = postSnapshot.getValue(Movie.class);
@@ -143,6 +156,7 @@ public class HomeActivity extends AppCompatActivity {
                     mListMovie.add(movie);
                 }
                 Collections.reverse(mListMovie);
+                initViewPager();
                 mAdapterListMovie.notifyDataSetChanged();
             }
 

@@ -13,4 +13,6 @@
     <color name="colorBlue">#000FFF</color>
     <color name="colorGray">#ebeae7</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorIndigo">#4b0082</color>
+    <color name="colorPink">#FF69B4</color>
 </resources>

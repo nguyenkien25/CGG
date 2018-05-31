@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.khtn.group12.cgg.R;
 import org.khtn.group12.cgg.activity.BookTicketActivity;
@@ -75,6 +76,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         // loading album cover using Glide library
         Glide.with(mContext)
                 .load(movie.getImage())
+                .apply(new RequestOptions()
+                        .centerCrop()
+                        .fitCenter()
+                        .placeholder(android.R.drawable.ic_menu_report_image))
                 .into(holder.imvThumbnail);
 
         holder.imvThumbnail.setOnClickListener(v -> showMovieDetail(movie));

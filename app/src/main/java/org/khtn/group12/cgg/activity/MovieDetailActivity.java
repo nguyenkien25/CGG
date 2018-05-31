@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -29,6 +30,8 @@ public class MovieDetailActivity extends AppCompatActivity implements YouTubePla
     Button btnGetTicket;
     @BindView(R.id.tv_movie_name)
     TextView tvMovieName;
+    @BindView(R.id.rating_bar_movie)
+    RatingBar ratingBarMovie;
     @BindView(R.id.tv_movie_info)
     TextView tvMovieInfo;
     @BindView(R.id.tv_movie_premiere)
@@ -79,6 +82,7 @@ public class MovieDetailActivity extends AppCompatActivity implements YouTubePla
             movie = (Movie) intent.getSerializableExtra(Constants.INTENT_PUT_EXTRA_MOVIE);
             tvMovieName.setText(movie.getName());
             tvMovieInfo.setText(movie.getInfo());
+            ratingBarMovie.setRating(movie.getRating() * 5 / 10);
             tvMoviePremiere.setText(movie.getPremiere());
             tvMovieKind.setText(movie.getKind());
             tvMovieDirectors.setText(movie.getDirectors());
